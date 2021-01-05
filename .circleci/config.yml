@@ -1,7 +1,10 @@
  version: 2.1
 
  orbs:
+  matlab: mathworks/matlab@0.2.0
   win: circleci/windows@2.2.0
+  python: circleci/python@1.0.0
+    version: 2.1
 
  jobs:
    build:
@@ -9,4 +12,7 @@
     
      steps:
        - checkout
-       - run: dotnet build
+       - matlab/install:
+           release: "latest"
+       - run: matlab -nodisplay -batch  "results = runTests(), assertSuccess(results)"
+       # run: matlab -nodisplay -batch  "matlab.addons.toolbox.installToolbox('/home/travis/build/mfaltas-sandia/MHKiT-MATLAB/mhkit.mltbx'), cd mhkit/tests/ , import mhkit.*, results = runTests(), assertSuccess(results)"
