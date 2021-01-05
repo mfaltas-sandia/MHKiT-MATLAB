@@ -3,8 +3,7 @@
  orbs:
   matlab: mathworks/matlab@0.2.0
   win: circleci/windows@2.2.0
-  python: circleci/python@1.0.0
-    version: 2.1
+  python: circleci/python@3.6.0
 
  jobs:
    build:
